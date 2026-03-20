@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+    padding: 0 !important;
+  }
+
+  .print-container {
+    background: white !important;
+    color: black !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 20px !important;
+  }
+
+  .print-card {
+    background: white !important;
+    border: 1px solid #eee !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+    margin-bottom: 20px !important;
+    color: black !important;
+  }
+
+  .print-text {
+    color: #333 !important;
+  }
+
+  .print-label {
+    color: #666 !important;
+  }
+
+  /* Ensure charts have enough height in print */
+  .recharts-responsive-container {
+    min-height: 400px !important;
+  }
+}
+
+/* Fix for html2canvas oklab/oklch error */
+.pdf-mode {
+  background-color: #050505 !important;
+  color: #ffffff !important;
+}
+
+.pdf-mode * {
+  /* Force fallback colors for common tailwind modern color variables if they exist */
+  --tw-bg-opacity: 1 !important;
+  --tw-text-opacity: 1 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  outline-color: transparent !important;
+  background-image: none !important; /* Remove gradients that might use oklch */
+}
+
+.pdf-mode .bg-indigo-500 { background-color: #6366f1 !important; }
+.pdf-mode .bg-indigo-600 { background-color: #4f46e5 !important; }
+.pdf-mode .bg-violet-600 { background-color: #7c3aed !important; }
+.pdf-mode .bg-emerald-500 { background-color: #10b981 !important; }
+.pdf-mode .bg-emerald-600 { background-color: #059669 !important; }
+.pdf-mode .bg-red-500 { background-color: #ef4444 !important; }
+.pdf-mode .bg-yellow-500 { background-color: #eab308 !important; }
+
+.pdf-mode .text-indigo-400 { color: #818cf8 !important; }
+.pdf-mode .text-indigo-300 { color: #a5b4fc !important; }
+.pdf-mode .text-emerald-400 { color: #34d399 !important; }
+.pdf-mode .text-red-400 { color: #f87171 !important; }
+.pdf-mode .text-yellow-500 { color: #eab308 !important; }
+
+.pdf-mode .border-indigo-500 { border-color: #6366f1 !important; }
+.pdf-mode .border-red-500 { border-color: #ef4444 !important; }
+
+.pdf-mode .print-card {
+  background-color: #111111 !important;
+  border: 1px solid #222222 !important;
+}
+
+.pdf-mode .print-text {
+  color: #eeeeee !important;
+}
+
+.pdf-mode .print-label {
+  color: #888888 !important;
+}
+
+/* Hide ambient glows that use gradients/blur which can also cause issues */
+.pdf-mode .no-print,
+.pdf-mode [class*="blur-"] {
+  display: none !important;
+}
